@@ -391,7 +391,7 @@ void draw_ui()
             printf("      OOOOOOOOOOOO");
         else
             printf("      OO　　　　OO");
-        if (i == 15 || i == 20) //debug 목적
+        if (i == 15 || i == 20) //debugging 목적
         {
             gotoxy(51, i);
             printf("OOOOOOOO");

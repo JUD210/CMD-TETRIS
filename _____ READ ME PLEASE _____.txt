@@ -1,4 +1,4 @@
-- BGM은 Settings 폴더 내부에 BGM.zip에 압축되어 있습니다.
+- BGM은 Settings 폴더 내부의 BGM.zip에 압축되어 있습니다.
 비밀번호는 이 영상의 설명란에 써져있습니다. (https://youtu.be/x75PPAyCXhY)
 (저작권 문제 발생시 곧바로 삭제)
 

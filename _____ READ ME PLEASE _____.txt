@@ -1,0 +1,5 @@
+실행 파일 (Program to start)
+: CMD_TETRIS.exe
+
+최적화된 폰트 (Optimized Font)
+: 굴림 (Gulim: Korean)

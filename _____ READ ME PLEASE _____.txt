@@ -1,5 +1,6 @@
-실행 파일 (Program to start)
-: CMD_TETRIS.exe
+'굴림' 폰트에 최적화되어 있습니다!
+굴림 이외의 폰트를 사용하시면 글자가 깨질 겁니다.
 
-최적화된 폰트 (Optimized Font)
-: 굴림 (Gulim: Korean)
+Optimized for 'Gulim' font!
+If you use another font, texts would be broken.
+

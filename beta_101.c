@@ -1,48 +1,48 @@
-/********** TO DO LIST ì‹œì‘!!! **********/
+/********** TO DO LIST ½ÃÀÛ!!! **********/
 
-//TD : block_attack (3 lv), block_assistant (5 lv) off ê¸°ëŠ¥ ì¶”ê°€
-//TD : Hold ì‹œ ì½¤ë³´ ëŠê¹€ ìˆ˜ì •
-//TD : Main menu ì— BGM ì¶”ê°€
-//TD : [3 stageë¶€í„° : ì‹œê°„ ì§€ë‚  ë•Œë§ˆë‹¤ ë¹ˆ ë¸”ëŸ­ ì˜¬ë¼ì˜¤ëŠ” ê¸°ëŠ¥ on]
-//TD : [5 stageë¶€í„° : ë°‘ì— ë³´ì¡° ë¸”ëŸ­ ë„ìš°ëŠ” ê¸°ëŠ¥ off]
+//TD : block_attack (3 lv), block_assistant (5 lv) off ±â´É Ãß°¡
+//TD : Hold ½Ã ÄŞº¸ ²÷±è ¼öÁ¤
+//TD : Main menu ¿¡ BGM Ãß°¡
+//TD : [3 stageºÎÅÍ : ½Ã°£ Áö³¯ ¶§¸¶´Ù ºó ºí·° ¿Ã¶ó¿À´Â ±â´É on]
+//TD : [5 stageºÎÅÍ : ¹Ø¿¡ º¸Á¶ ºí·° ¶ç¿ì´Â ±â´É off]
 //
-//TD : map ì„ íƒ ê°€ëŠ¥ (void, wall, diamond, heart, zigzag, random)
-//TDL : stage ì„ íƒ ê°€ëŠ¥
+//TD : map ¼±ÅÃ °¡´É (void, wall, diamond, heart, zigzag, random)
+//TDL : stage ¼±ÅÃ °¡´É
 //
 
-/********** TO DO LIST ë!!! **********/
+/********** TO DO LIST ³¡!!! **********/
 
 
 
 /********** BGM ON/OFF ***********/
-//PlaySound ì°¾ì•„ì„œ Comment/Uncomment
+//PlaySound Ã£¾Æ¼­ Comment/Uncomment
 /********** BGM ON/OFF ***********/
 
 #include <stdio.h>                // main()
-#include <stdlib.h>               // ë‚œìˆ˜
-#include <time.h>                 // ë‚œìˆ˜
+#include <stdlib.h>               // ³­¼ö
+#include <time.h>                 // ³­¼ö
 #include <windows.h>              // gotoxy(), setcolor(), GetTickCount();
 #include <conio.h>                // _getch(), _kbhit()
 #include <mmsystem.h>             // bgm
 #pragma comment(lib, "winmm.lib") // bgm
 
-/********** í•¨ìˆ˜ ì„ ì–¸ ì‹œì‘!!! **********/
+/********** ÇÔ¼ö ¼±¾ğ ½ÃÀÛ!!! **********/
 
-void gotoxy(int x, int y);             //ì½˜ì†”ì°½ ì»¤ì„œ ì´ë™
-void setcolor(int color, int bgcolor); //ìƒ‰ ì„¤ì • (0~16,0~16)
-void removecursor();                   //ì»¤ì„œ ê¹œë¹¡ì„ ì œê±°
+void gotoxy(int x, int y);             //ÄÜ¼ÖÃ¢ Ä¿¼­ ÀÌµ¿
+void setcolor(int color, int bgcolor); //»ö ¼³Á¤ (0~16,0~16)
+void removecursor();                   //Ä¿¼­ ±ôºıÀÓ Á¦°Å
 
-void main_menu(); //í”„ë¡œê·¸ë¨ ì‹œì‘ì‹œ ì‘ë™
-void in_game();   //ê²Œì„ ì‹œì‘ì‹œ ì‘ë™
+void main_menu(); //ÇÁ·Î±×·¥ ½ÃÀÛ½Ã ÀÛµ¿
+void in_game();   //°ÔÀÓ ½ÃÀÛ½Ã ÀÛµ¿
 
-void initiate_variables(); //ì „ì—­ë³€ìˆ˜ë“¤ ì´ˆê¸°í™”
+void initiate_variables(); //Àü¿ªº¯¼öµé ÃÊ±âÈ­
 
-void line_check(); //ê½‰ ì°¬ ë¼ì¸ ì œê±°, ì½¤ë³´ìˆ˜ ì œì–´
+void line_check(); //²Ë Âù ¶óÀÎ Á¦°Å, ÄŞº¸¼ö Á¦¾î
 
-void draw_ui();            //ê¸°ë³¸ ui ê·¸ë¦¬ê¸°
-void draw_score_board();   //ì ìˆ˜íŒ ê·¸ë¦¬ê¸°
-void draw_stored_blocks(); //ì €ì¥ëœ ë¸”ëŸ­ë“¤ ê·¸ë¦¬ê¸°
-void draw_dancer();        //ì¶¤ì¶”ëŠ” ì‚¬ëŒ ê·¸ë¦¬ê¸°
+void draw_ui();            //±âº» ui ±×¸®±â
+void draw_score_board();   //Á¡¼öÆÇ ±×¸®±â
+void draw_stored_blocks(); //ÀúÀåµÈ ºí·°µé ±×¸®±â
+void draw_dancer();        //ÃãÃß´Â »ç¶÷ ±×¸®±â
 void draw_main_game();     //
 
 void create_block();
@@ -62,23 +62,23 @@ void block_fall();
 
 void print_debug_info();
 
-/********** í•¨ìˆ˜ ì„ ì–¸ ë!!! **********/
+/********** ÇÔ¼ö ¼±¾ğ ³¡!!! **********/
 
-/********** ì „ì—­ë³€ìˆ˜ ì‹œì‘!!! **********/
+/********** Àü¿ªº¯¼ö ½ÃÀÛ!!! **********/
 
 int game_screen[26][16] = {
     // [0~25][0~11] : MAIN GAME SCREEN, [0~2, 3~5, 6~8, 9~11][12~15] : NEXT LIST, [12~14][12~15] : HOLD
-    {7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 7}, // (5,0 or 5,1) : ë¸”ëŸ­ ìƒì„± ìœ„ì¹˜
-    {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7}, // 7:ë²½, 8:ê²Œì„ ì˜¤ë²„ íŒì • ë¼ì¸, (8->2 ì¼ ì‹œ ê²Œì„ ì˜¤ë²„)
-    {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7}, // 9:ê²Œì„ ì˜¤ë²„ì‹œ ì±„ìš°ëŠ” ë¸”ëŸ­
+    {7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 7}, // (5,0 or 5,1) : ºí·° »ı¼º À§Ä¡
+    {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7}, // 7:º®, 8:°ÔÀÓ ¿À¹ö ÆÇÁ¤ ¶óÀÎ, (8->2 ÀÏ ½Ã °ÔÀÓ ¿À¹ö)
+    {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7}, // 9:°ÔÀÓ ¿À¹ö½Ã Ã¤¿ì´Â ºí·°
     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
-    {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7}, // 0:ë¹ˆ ì¹¸
+    {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7}, // 0:ºó Ä­
     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7}, // state = (shape * 100~600) + (rotate * 0~30);
     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7}, // game_screen[y][x] = state;
-    {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7}, // if (game_screen[y][x] % 10 == 1) { checkCtrl = 1 } // ì¡°ì‘ì¤‘ì¸ ë¸”ëŸ­
-    {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7}, // if (game_screen[y][x] % 10 == 2) { checkCtrl = 0 } // ê³ ì •ëœ ë¸”ëŸ­
+    {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7}, // if (game_screen[y][x] % 10 == 1) { checkCtrl = 1 } // Á¶ÀÛÁßÀÎ ºí·°
+    {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7}, // if (game_screen[y][x] % 10 == 2) { checkCtrl = 0 } // °íÁ¤µÈ ºí·°
     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
@@ -94,67 +94,67 @@ int game_screen[26][16] = {
     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7}};
 
-int game_over; // ê²Œì„ ì˜¤ë²„ ì—¬ë¶€
+int game_over; // °ÔÀÓ ¿À¹ö ¿©ºÎ
 
-int power_all;          // main_menu(), in_game() ì „ì›
-int power_main_menu;    // ë©”ì¸ ë©”ë‰´ ì „ì›
-int power_in_game;      // ì¸ê²Œì„ ì „ì›
-int power_in_game_loop; //ì¸ê²Œì„ ë‚´ë¶€ ì „ì›
+int power_all;          // main_menu(), in_game() Àü¿ø
+int power_main_menu;    // ¸ŞÀÎ ¸Ş´º Àü¿ø
+int power_in_game;      // ÀÎ°ÔÀÓ Àü¿ø
+int power_in_game_loop; //ÀÎ°ÔÀÓ ³»ºÎ Àü¿ø
 
 int draw_again;
 
-int checkCtrl; // 1:ì¡°ì‘ì¤‘, 0:ì¡°ì‘ ë
+int checkCtrl; // 1:Á¶ÀÛÁß, 0:Á¶ÀÛ ³¡
 
-int startTickCount;   // startTickCount = GetTickCount(); 1íšŒ
-int currentTickCount; // currentTickCount = GetTickCount(); ê³„ì†
+int startTickCount;   // startTickCount = GetTickCount(); 1È¸
+int currentTickCount; // currentTickCount = GetTickCount(); °è¼Ó
 
-int command; // block_ctrl(); ì—ì„œ ì¡°ì‘í‚¤ ë¶„ë¥˜ ìˆ˜í–‰
-int shape;   // block(); ì—ì„œ ëª¨ì–‘ ê²°ì •
-int rotate;  // block(); ì—ì„œ íšŒì „ ì •ë„ ê²°ì •
-int state;   // block(); ì—ì„œ ë¸”ëŸ­ì˜ ìƒíƒœ ê²°ì •
-             //state = (shape * 100~600) + (rotate * 0~30) + (ì¡°ì‘/ê³ ì • ì‹œ +1/+2);
-int x, y;    // ì¢Œí‘œ
-int i, j, k; // ë°˜ë³µìš©
+int command; // block_ctrl(); ¿¡¼­ Á¶ÀÛÅ° ºĞ·ù ¼öÇà
+int shape;   // block(); ¿¡¼­ ¸ğ¾ç °áÁ¤
+int rotate;  // block(); ¿¡¼­ È¸Àü Á¤µµ °áÁ¤
+int state;   // block(); ¿¡¼­ ºí·°ÀÇ »óÅÂ °áÁ¤
+             //state = (shape * 100~600) + (rotate * 0~30) + (Á¶ÀÛ/°íÁ¤ ½Ã +1/+2);
+int x, y;    // ÁÂÇ¥
+int i, j, k; // ¹İº¹¿ë
 
 int input; // input=_getch();
 
-int stage;                  // stage ì¦ê°€í• ìˆ˜ë¡ ë¸”ëŸ­ í•˜ê°• ì†ë„ ì¦ê°€
+int stage;                  // stage Áõ°¡ÇÒ¼ö·Ï ºí·° ÇÏ°­ ¼Óµµ Áõ°¡
 int line;                   // next stage line : (10*stage)+(2*(stage-1))-line; ex)1st:10, 2st:12, 3st:14, ...
-int line_counter[23] = {0}; // if(line_counter[N]==10) {ë¼ì¸ ì œê±°}
-int score;                  // ë‹¤ìŒ ìŠ¤í…Œì´ì§€ì— í•„ìš”í•œ ì ìˆ˜
+int line_counter[23] = {0}; // if(line_counter[N]==10) {¶óÀÎ Á¦°Å}
+int score;                  // ´ÙÀ½ ½ºÅ×ÀÌÁö¿¡ ÇÊ¿äÇÑ Á¡¼ö
 
-int store_hold;       //ê³µì‚¬ì¤‘ holdì— block shape ì €ì¥
-int store_hold_ctrl;  //ê³µì‚¬ì¤‘ -1.ì²« í™€ë“œ ëª…ë ¹ ëŒ€ê¸°ì¤‘ 0.ëŒ€ê¸°ì¤‘ 1.ì²« í™€ë“œ ëª…ë ¹ 2.í™€ë“œ ëª…ë ¹
-int store_hold_count; //ê³µì‚¬ì¤‘ 0.í™€ë“œ ì•„ì§ ì•ˆ ì¼ìŒ 1.í™€ë“œ ì´ë¯¸ ì¼ìŒ!
-int store_next[5];    //ê³µì‚¬ì¤‘ nextì— block shape ì €ì¥ ( 0 : ì¡°ì‘ì¤‘ block, 1/2/3/4 : NEXT block )
+int store_hold;       //°ø»çÁß hold¿¡ block shape ÀúÀå
+int store_hold_ctrl;  //°ø»çÁß -1.Ã¹ È¦µå ¸í·É ´ë±âÁß 0.´ë±âÁß 1.Ã¹ È¦µå ¸í·É 2.È¦µå ¸í·É
+int store_hold_count; //°ø»çÁß 0.È¦µå ¾ÆÁ÷ ¾È ½èÀ½ 1.È¦µå ÀÌ¹Ì ½èÀ½!
+int store_next[5];    //°ø»çÁß next¿¡ block shape ÀúÀå ( 0 : Á¶ÀÛÁß block, 1/2/3/4 : NEXT block )
                       //if (input==99) { store_hold <=> store_next[0]; }
 
-int startTickCount_dance;     // ì¶¤
-int startTickCount_key_light; // í‚¤ë³´ë“œ ë°˜ì§
+int startTickCount_dance;     // Ãã
+int startTickCount_key_light; // Å°º¸µå ¹İÂ¦
 
-int song;            // 0.ì¬ìƒì¤‘ 1.BGM001 2.BGM002 3.BGM003  10.next stage  90.title  99.GameOver
-int song_counter[3]; // 1. ì¬ìƒ ì•ˆë¨ , 0. ì¬ìƒ ë¨ : ê°™ì€ ê³¡ ì¤‘ë³µ ì¬ìƒ ë°©ì§€
-int song_ctrl;       // 1. ë…¸ë˜ ì„ íƒ  0.ì¬ìƒì¤‘
+int song;            // 0.Àç»ıÁß 1.BGM001 2.BGM002 3.BGM003  10.next stage  90.title  99.GameOver
+int song_counter[3]; // 1. Àç»ı ¾ÈµÊ , 0. Àç»ı µÊ : °°Àº °î Áßº¹ Àç»ı ¹æÁö
+int song_ctrl;       // 1. ³ë·¡ ¼±ÅÃ  0.Àç»ıÁß
 
-int delay;            // ë¸”ëŸ­ ë–¨ì–´ì§€ëŠ” ì†ë„
-int delay_dance;      // ì¶¤ì¶”ëŠ” ì†ë„
+int delay;            // ºí·° ¶³¾îÁö´Â ¼Óµµ
+int delay_dance;      // ÃãÃß´Â ¼Óµµ
 int delay_dance_ctrl; // if (combo>=3) { delay_dance /= 2, delay_dance_ctrl = 1}
-int head;             // ë¨¸ë¦¬ ì›€ì§ì´ëŠ” ì†ë„
+int head;             // ¸Ó¸® ¿òÁ÷ÀÌ´Â ¼Óµµ
 
-int combo;          // ì½¤ë³´ìˆ˜!!
-int combo_ctrl;     // ì½¤ë³´ ì œì–´
-int combo_continue; // if(combo < combo_continue) { ì½¤ë³´ ëŠê¹€ }
+int combo;          // ÄŞº¸¼ö!!
+int combo_ctrl;     // ÄŞº¸ Á¦¾î
+int combo_continue; // if(combo < combo_continue) { ÄŞº¸ ²÷±è }
 
-int bgcolor_timer; //ë°°ê²½ìƒ‰ ë³€í™”
+int bgcolor_timer; //¹è°æ»ö º¯È­
 
-int i, j, k; // ë‹¨ìˆœ ë°˜ë³µìš©
-int temp;    // ë³€ìˆ˜ êµí™˜ìš©
+int i, j, k; // ´Ü¼ø ¹İº¹¿ë
+int temp;    // º¯¼ö ±³È¯¿ë
 
-int debug; // ë””ë²„ê·¸ ì²´í¬ìš©
+int debug; // µğ¹ö±× Ã¼Å©¿ë
 
-/********** ì „ì—­ë³€ìˆ˜ ë!!! **********/
+/********** Àü¿ªº¯¼ö ³¡!!! **********/
 
-/********** main ì‹œì‘!!! **********/
+/********** main ½ÃÀÛ!!! **********/
 
 void main()
 {
@@ -176,30 +176,30 @@ void main()
     }
 }
 
-/********** main ë!!! **********/
+/********** main ³¡!!! **********/
 
-/********** í•¨ìˆ˜ ì •ì˜ ì‹œì‘!!! **********/
+/********** ÇÔ¼ö Á¤ÀÇ ½ÃÀÛ!!! **********/
 
 void main_menu()
 {
     gotoxy(21, 4);
-    printf("OOOOOOOOOOOOOOOOOOOO");
+    printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
     gotoxy(21, 5);
-    printf("OOã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€OO");
+    printf("¡á                ¡á");
     gotoxy(21, 6);
-    printf("OO   T E T R I S  OO");
+    printf("¡á  T E T R I S   ¡á");
     gotoxy(21, 7);
-    printf("OOã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€OO");
+    printf("¡á                ¡á");
     gotoxy(21, 8);
-    printf("OOOOOOOOOOOOOOOOOOOO");
+    printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
     gotoxy(21, 11);
     printf("    BETA Ver.101   ");
     gotoxy(21, 17);
-    printf("      !");
-    gotoxy(21, 17);
+    printf("    Press ");
     setcolor(11, 0);
-    printf("ENTER");
+    printf("ENTER ");
     setcolor(7, 0);
+    printf("!");
     gotoxy(21, 23);
     printf("Made by : M.H (JUD210)");
 
@@ -251,18 +251,18 @@ void in_game()
     }
 }
 
-void gotoxy(int x, int y) //ì»¤ì„œ ì´ë™
+void gotoxy(int x, int y) //Ä¿¼­ ÀÌµ¿
 {
     COORD Pos = {x - 1, y - 1};
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
-void setcolor(int color, int bgcolor) //ìƒ‰ ì„¤ì • (0~16,0~16)
+void setcolor(int color, int bgcolor) //»ö ¼³Á¤ (0~16,0~16)
 {
     color &= 0xf;
     bgcolor &= 0xf;
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (bgcolor << 4) | color);
 }
-void removecursor() // ì»¤ì„œ ê¹œë¹¡ì„ ì œê±°
+void removecursor() // Ä¿¼­ ±ôºıÀÓ Á¦°Å
 {
     CONSOLE_CURSOR_INFO cur;
     GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cur);
@@ -278,7 +278,7 @@ void initiate_variables()
     song_ctrl = 1, song = rand() % 3 + 1, song_counter[0] = 1, song_counter[1] = 1, song_counter[2] = 1;
     draw_again = 0, store_hold = 0, store_hold_ctrl = -1, store_hold_count = 0;
     stage = 1, line = 0, score = 0, combo = 0;
-    map(rand() % 1 + 1); //ê³µì‚¬ì¤‘ ë§µ ì¶”ê°€ì‹œ % n ë°”ê¿”ì•¼
+    map(rand() % 1 + 1); //°ø»çÁß ¸Ê Ãß°¡½Ã % n ¹Ù²ã¾ß
 
     for (i = 0; i < 5; i++)
     {
@@ -293,7 +293,7 @@ void line_check()
         combo_ctrl = 0;
         for (i = 23; i >= 1; i--)
         {
-            for (j = 0; j <= 10; j++) // ê½‰ ì°¬ ë¼ì¸ íƒìƒ‰
+            for (j = 0; j <= 10; j++) // ²Ë Âù ¶óÀÎ Å½»ö
             {
                 if (j == 0)
                     line_counter[i - 1] = 0;
@@ -301,24 +301,24 @@ void line_check()
                     line_counter[i - 1]++;
             }
 
-            for (j = 0; j < 3; j++) // ê½‰ ì°¬ ë¼ì¸ 3ë²ˆ ë°˜ì§ì´ê¸°
+            for (j = 0; j < 3; j++) // ²Ë Âù ¶óÀÎ 3¹ø ¹İÂ¦ÀÌ±â
             {
                 if (line_counter[i - 1] == 10)
                 {
                     gotoxy(21, i + 1); // x:+24, y:+1
                     if (j % 2 == 0)
                     {
-                        printf("ã…ã…ã…ã…ã…ã…ã…ã…ã…ã…ã…");
+                        printf("¡à¡à¡à¡à¡à¡à¡à¡à¡à¡à¡à");
                     }
                     else
                     {
-                        printf("â–£â–£â–£â–£â–£â–£â–£â–£â–£â–£");
+                        printf("¢Ã¢Ã¢Ã¢Ã¢Ã¢Ã¢Ã¢Ã¢Ã¢Ã");
                     }
                     Sleep(25);
                 }
             }
 
-            if (line_counter[i - 1] == 10) // ê½‰ ì°¬ ë¼ì¸ í‘œì‹
+            if (line_counter[i - 1] == 10) // ²Ë Âù ¶óÀÎ Ç¥½Ä
             {
                 line++;
                 score++;
@@ -326,13 +326,13 @@ void line_check()
             }
         }
 
-        if (combo_ctrl > 0) // ì½¤ë³´ìˆ˜ ì œì–´
+        if (combo_ctrl > 0) // ÄŞº¸¼ö Á¦¾î
         {
             combo++, combo_ctrl = 0;
-            score += combo - 1; // ì½¤ë³´ ìˆ˜ ì¦ê°€ì— ë”°ë¥¸ ì ìˆ˜ ì¦ê°€
+            score += combo - 1; // ÄŞº¸ ¼ö Áõ°¡¿¡ µû¸¥ Á¡¼ö Áõ°¡
         }
 
-        if (combo <= combo_continue) // ì½¤ë³´ ìœ ì§€ ì œì–´
+        if (combo <= combo_continue) // ÄŞº¸ À¯Áö Á¦¾î
             combo = 0, combo_continue = 0;
 
         if (combo >= 3 && delay_dance_ctrl == 0) // DANCE TIME BEGIN!!!
@@ -341,7 +341,7 @@ void line_check()
             delay_dance *= 2, delay_dance_ctrl = 0;
 
         i = 23;
-        while (i >= 1) // ê½‰ ì°¬ ë¼ì¸ ì œê±°
+        while (i >= 1) // ²Ë Âù ¶óÀÎ Á¦°Å
         {
             if (line_counter[i - 1] == 10)
             {
@@ -368,9 +368,9 @@ void draw_ui()
     {
         gotoxy(3, i);
         if (i == 2 || i == 7)
-            printf("OOOOOOOOOOOO");
+            printf("$$$$$$$$$$$$");
         else
-            printf("OOã€€ã€€ã€€ã€€OO");
+            printf("$$        $$");
     }
 
     gotoxy(49, 1);
@@ -379,22 +379,22 @@ void draw_ui()
     {
         gotoxy(43, i);
         if (i == 2 || i == 7)
-            printf("      OOOOOOOOOOOO");
+            printf("      ¡á¡á¡á¡á¡á¡á");
         else
-            printf("      OOã€€ã€€ã€€ã€€OO");
+            printf("      ¡á        ¡á");
     }
 
     for (i = 10; i <= 25; i++) // NEXT List size : 49~56(8 byte) * 9~11 + 13~15 + 17~19 + 21~23
     {
         gotoxy(43, i);
         if (i == 10 || i == 25)
-            printf("      OOOOOOOOOOOO");
+            printf("      ¡á¡á¡á¡á¡á¡á");
         else
-            printf("      OOã€€ã€€ã€€ã€€OO");
-        if (i == 15 || i == 20) //debugging ëª©ì 
+            printf("      ¡á        ¡á");
+        if (i == 15 || i == 20) //debugging ¸ñÀû
         {
             gotoxy(51, i);
-            printf("OOOOOOOO");
+            printf("¡á¡á¡á¡á");
         }
     }
 
@@ -412,15 +412,15 @@ void draw_ui()
     gotoxy(1, 15);
     printf("     Rotate");
     gotoxy(8, 16);
-    printf("â–²");
+    printf("¡ã");
     gotoxy(1, 17);
-    printf(" Leftâ—€");
+    printf(" Left¢¸");
     gotoxy(10, 17);
-    printf("â–¶Right");
+    printf("¢ºRight");
     gotoxy(8, 18);
-    printf("â–¼");
+    printf("¡å");
     gotoxy(1, 19);
-    printf("ã€€  Fast Down");
+    printf("    Fast Down");
     gotoxy(2, 21);
     printf("[SPACE] : Drop");
     gotoxy(2, 22);
@@ -448,13 +448,13 @@ void draw_score_board()
     printf("%3d ", (stage * stage) + 9 * stage - line);
     //[S=1]10-L, [S=2]10+(10+2)-L, [s=3]10+(10+2)+(10+4)-L, ...
     //[S=n] { k=1 to k=n sigma 10+2(k-1) } - L
-    //[S=n] { n^2 + 9n } - L  â˜ê³„ì°¨ìˆ˜ì—´ì˜ í™œìš© : í”„ë¡œê·¸ë˜ë¨¸ê°€ ìˆ˜í•™ì„ ë°°ì›Œì•¼ í•˜ëŠ” ì´ìœ 
+    //[S=n] { n^2 + 9n } - L  ¢Ñ°èÂ÷¼ö¿­ÀÇ È°¿ë : ÇÁ·Î±×·¡¸Ó°¡ ¼öÇĞÀ» ¹è¿ö¾ß ÇÏ´Â ÀÌÀ¯
 }
 void draw_stored_blocks()
 {
     if (debug == 1)
         return;
-    for (i = 1; i <= 5; i++) // ê·¸ë¦°ë‹¤.
+    for (i = 1; i <= 5; i++) // ±×¸°´Ù.
     {                        //i==1 : next, i==2~4 : next list, i==5 hold
         int tx, ty;          // tx:temp_x, ty:temp_y
         if (i == 1)
@@ -469,9 +469,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 13; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -484,9 +484,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 15; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -499,9 +499,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -514,9 +514,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -529,9 +529,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -544,9 +544,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -559,9 +559,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -585,9 +585,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 13; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -605,9 +605,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 15; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -625,9 +625,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -645,9 +645,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -665,9 +665,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -685,9 +685,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -705,9 +705,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -726,9 +726,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 13; tx++)
                     {
                         if (game_screen[ty + 12][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -741,9 +741,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 15; tx++)
                     {
                         if (game_screen[ty + 12][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -756,9 +756,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty + 12][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -771,9 +771,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty + 12][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -786,9 +786,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty + 12][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -801,9 +801,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty + 12][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -816,9 +816,9 @@ void draw_stored_blocks()
                     for (tx = 12; tx <= 14; tx++)
                     {
                         if (game_screen[ty + 12][tx] % 10 == 1)
-                            printf("â– ");
+                            printf("¡á");
                         else
-                            printf("ã€€");
+                            printf("  ");
                     }
                 }
                 setcolor(7, 0);
@@ -841,69 +841,69 @@ void draw_dancer()
         gotoxy(43, 20 - stage);
         printf("%3d", combo);
         gotoxy(43, 21 - stage);
-        printf("combo!"); //ì½¤ë³´ ë°˜ì§
+        printf("combo!"); //ÄŞº¸ ¹İÂ¦
         if (combo >= 3)
             setcolor(7, 0);
         gotoxy(8, 17);
         setcolor(7, bgcolor_timer);
-        printf("ã€€"); //ì¡°ì´ìŠ¤í‹± ê°€ìš´ë° ë°˜ì§
+        printf("  "); //Á¶ÀÌ½ºÆ½ °¡¿îµ¥ ¹İÂ¦
         setcolor(7, 0);
         setcolor(bgcolor_timer, 0);
         if (head == 0)
         {
             gotoxy(43, 22 - stage);
-            printf(" ã…‡   ");
+            printf(" ¤·   ");
         }
         if (head == 1)
         {
             gotoxy(43, 22 - stage);
-            printf("  ã…‡  ");
+            printf("  ¤·  ");
         }
         if (head == 2)
         {
             gotoxy(43, 22 - stage);
-            printf("   ã…‡ ");
+            printf("   ¤· ");
         }
         if (head == 3)
         {
             gotoxy(43, 22 - stage);
-            printf("  ã…‡  ");
+            printf("  ¤·  ");
         }
         if (bgcolor_timer % 4 == 1)
         {
             gotoxy(43, 23 - stage);
-            printf(" /ã…£ï¼");
+            printf(" /¤Ó£¯");
             gotoxy(43, 24 - stage);
-            printf("  ã…£  ");
+            printf("  ¤Ó  ");
             gotoxy(43, 25 - stage);
-            printf(" ï¼ï¼¼ ");
+            printf(" £¯¡¬ ");
         }
         if (bgcolor_timer % 4 == 2)
         {
             gotoxy(43, 23 - stage);
-            printf("ï¼ã…£/ ");
+            printf("£¯¤Ó/ ");
             gotoxy(43, 24 - stage);
-            printf("  ã…£  ");
+            printf("  ¤Ó  ");
             gotoxy(43, 25 - stage);
-            printf(" ï¼ï¼¼ ");
+            printf(" £¯¡¬ ");
         }
         if (bgcolor_timer % 4 == 3)
         {
             gotoxy(43, 23 - stage);
-            printf("ï¼¼ã…£ï¼¼");
+            printf("¡¬¤Ó¡¬");
             gotoxy(43, 24 - stage);
-            printf("  ã…£  ");
+            printf("  ¤Ó  ");
             gotoxy(43, 25 - stage);
-            printf(" ï¼ ï¼¼");
+            printf(" £¯ ¡¬");
         }
         if (bgcolor_timer % 4 == 0)
         {
             gotoxy(43, 23 - stage);
-            printf("ï¼¼ã…£ï¼¼");
+            printf("¡¬¤Ó¡¬");
             gotoxy(43, 24 - stage);
-            printf("  ã…£  ");
+            printf("  ¤Ó  ");
             gotoxy(43, 25 - stage);
-            printf(" ï¼ï¼¼ ");
+            printf(" £¯¡¬ ");
         }
         setcolor(7, 0);
         bgcolor_timer++;
@@ -912,14 +912,14 @@ void draw_dancer()
             head = 0;
         setcolor(0, 7);
         gotoxy(43, 26 - stage);
-        printf("OO%2dOO", stage); //ë°”ë‹¥
+        printf("¡á%2d¡á", stage); //¹Ù´Ú
         setcolor(7, 0);
         startTickCount_dance = GetTickCount();
     }
 }
 void draw_main_game()
 {
-    if (game_over == 1) // ê²Œì„ ì˜¤ë²„ì‹œ í™”ë©´ ì±„ìš°ê¸° ìœ„í•¨
+    if (game_over == 1) // °ÔÀÓ ¿À¹ö½Ã È­¸é Ã¤¿ì±â À§ÇÔ
     {
         for (i = 1; i < 24; i++)
         {
@@ -935,7 +935,7 @@ void draw_main_game()
         if (game_over == 0)
             gotoxy(19, i + 1);
 
-        if (game_over == 1) // gotoxy ì¶œë ¥ìˆœì„œê°€ ë°”ë€Œì–´ë„ ì •ìƒ ì¶œë ¥ ë˜ë„ë¡
+        if (game_over == 1) // gotoxy Ãâ·Â¼ø¼­°¡ ¹Ù²î¾îµµ Á¤»ó Ãâ·Â µÇµµ·Ï
         {
             gotoxy(19, 25 - i);
             if (i == 0)
@@ -956,15 +956,15 @@ void draw_main_game()
             else if (debug == 0)
             {
                 if (game_screen[i][j] == 7)
-                    printf("OO");
+                    printf("¡á");
                 if (game_screen[i][j] == 8)
                 {
                     setcolor(12, 0);
-                    printf("OO");
+                    printf("¡á");
                     setcolor(7, 0);
                 }
                 if (game_screen[i][j] == 0)
-                    printf("ã€€");
+                    printf("  ");
 
                 if (game_screen[i][j] % 10 == 1)
                 {
@@ -988,13 +988,13 @@ void draw_main_game()
                                 setcolor(9, 0);
                             else if (k == 7)
                                 setcolor(13, 0);
-                            printf("â– ");
+                            printf("¡á");
                             k = 8;
                         }
                     }
                     setcolor(7, 0);
                 }
-                //system(7,0) ã…(14,0)ë…¸ë‘ ã…¡ë¹¨ê°•(12,0) ã…—(10,0)ì´ˆë¡ ã„´(11,0)í•˜ëŠ˜ ã„´reví°(15,0) ã„¹íŒŒë‘(9,0) ã„¹revë³´ë¼(13,0)
+                //system(7,0) ¡à(14,0)³ë¶û ¤Ñ»¡°­(12,0) ¤Ç(10,0)ÃÊ·Ï ¤¤(11,0)ÇÏ´Ã ¤¤revÈò(15,0) ¤©ÆÄ¶û(9,0) ¤©revº¸¶ó(13,0)
                 if (game_screen[i][j] % 10 == 2)
                 {
                     for (k = 0; k < 8; k++)
@@ -1017,17 +1017,17 @@ void draw_main_game()
                                 setcolor(9, 0);
                             else if (k == 7)
                                 setcolor(13, 0);
-                            printf("â–£");
+                            printf("¢Ã");
                             k = 8;
                         }
                     }
                     setcolor(7, 0);
                 }
 
-                if (game_screen[i][j] == 9) // ê²Œì„ ì˜¤ë²„ì‹œ í™”ë©´ ì±„ìš°ëŠ” ë¸”ëŸ­
-                    printf("â–£");
-                if (game_screen[i][j] == 3) // [debug]ë§Œì•½ í—ì´ ëœ¬ë‹¤ë©´, ë¼ì¸ ì œê±°ì— ë¬¸ì œê°€ ìƒê¸´ ê²ƒ
-                    printf("í—");
+                if (game_screen[i][j] == 9) // °ÔÀÓ ¿À¹ö½Ã È­¸é Ã¤¿ì´Â ºí·°
+                    printf("¢Ã");
+                if (game_screen[i][j] == 3) // [debug]¸¸¾à ÇæÀÌ ¶á´Ù¸é, ¶óÀÎ Á¦°Å¿¡ ¹®Á¦°¡ »ı±ä °Í
+                    printf("Çæ");
             }
         }
         if (game_over == 1)
@@ -1038,21 +1038,21 @@ void draw_main_game()
     {
         Sleep(280);
         gotoxy(21, 7);
-        printf("ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€");
+        printf("                    ");
         gotoxy(21, 8);
         printf(" G A M E    O V E R ");
         gotoxy(21, 9);
-        printf("ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€");
+        printf("                    ");
         gotoxy(21, 14);
-        printf("ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€");
+        printf("                    ");
         gotoxy(21, 15);
         printf("Press  r  to Restart");
         gotoxy(21, 16);
-        printf("ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€");
+        printf("                    ");
         gotoxy(21, 17);
         printf("Press ESC to Quit   ");
         gotoxy(21, 18);
-        printf("ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€");
+        printf("                    ");
 
         input = _getch();
         if (input == 114) // r
@@ -1063,24 +1063,24 @@ void draw_main_game()
 }
 
 void create_block()
-{ ///// ë¸”ëŸ­ ìƒì„±
+{ ///// ºí·° »ı¼º
     if (checkCtrl == 0 && game_over == 0)
     {
         checkCtrl = 1;
 
-        if (store_hold_ctrl == 0) // í™€ë“œ ëª…ë ¹ ëŒ€ê¸°ì¤‘
+        if (store_hold_ctrl == 0) // È¦µå ¸í·É ´ë±âÁß
             store_hold_count = 0;
 
-        if ((store_hold_ctrl == -1 || store_hold_ctrl == 0) && combo >= 1) // ì½¤ë³´ ëŠê¹€ ì—¬ë¶€ íŒŒì•…í•˜ê¸° ìœ„í•¨
+        if ((store_hold_ctrl == -1 || store_hold_ctrl == 0) && combo >= 1) // ÄŞº¸ ²÷±è ¿©ºÎ ÆÄ¾ÇÇÏ±â À§ÇÔ
             combo_continue++;
 
         // hold
         switch (store_hold_ctrl)
         {
-        case 1: // ì²˜ìŒìœ¼ë¡œ hold ëª…ë ¹ ë‚´ë ¤ì§
+        case 1: // Ã³À½À¸·Î hold ¸í·É ³»·ÁÁü
             store_hold = store_next[0];
             break;
-        case 2: // hold ëª…ë ¹ ë‚´ë ¤ì§
+        case 2: // hold ¸í·É ³»·ÁÁü
             temp = store_next[0];
             store_next[0] = store_hold;
             store_hold = temp;
@@ -1101,7 +1101,7 @@ void create_block()
         if (store_hold_ctrl != -1)
             store_hold_ctrl = 0;
 
-        for (i = 0; i <= 24; i++) //// BLOCK ë° NEXT LIST ë‚´ë¶€ ë¸”ë¡ë“¤ ì „ë¶€ ì§€ìš°ê³ , ...
+        for (i = 0; i <= 24; i++) //// BLOCK ¹× NEXT LIST ³»ºÎ ºí·Ïµé ÀüºÎ Áö¿ì°í, ...
         {
             for (j = 12; j <= 15; j++)
             {
@@ -1124,7 +1124,7 @@ void create_block()
             }
         }
 
-        for (i = 1; i <= 5; i++) //... ë‹¤ì‹œ ìƒì„±í•˜ì—¬(block), ...
+        for (i = 1; i <= 5; i++) //... ´Ù½Ã »ı¼ºÇÏ¿©(block), ...
         {
             if (i < 5)
             {
@@ -1214,16 +1214,16 @@ void create_block()
         }
 
         block(shape, x, y, 0, 0, 0, state);
-        //block(shape, x, y, 0, 0, 0, (shape * 100 + rotate * 10 + 1)); í•˜ë©´ ì¹˜ëª…ì  ì—ëŸ¬ ë°œìƒ (ì™œ?)
+        //block(shape, x, y, 0, 0, 0, (shape * 100 + rotate * 10 + 1)); ÇÏ¸é Ä¡¸íÀû ¿¡·¯ ¹ß»ı (¿Ö?)
     }
 }
 
 void song_play()
 {
-    /////1,3,5, ... ìŠ¤í…Œì´ì§€ ë§ˆë‹¤ ë…¸ë˜ ë³€ê²½
+    /////1,3,5, ... ½ºÅ×ÀÌÁö ¸¶´Ù ³ë·¡ º¯°æ
     if (song_ctrl == 1 && (stage % 2 == 1))
     {
-        if (stage > 1) // ì•„ì´ ì”ë‚˜!
+        if (stage > 1) // ¾ÆÀÌ ¾»³ª!
         {
             //PlaySound(NULL, 0, 0);
             //PlaySound(TEXT("BGM010-Next Stage"), NULL, SND_ASYNC);
@@ -1233,13 +1233,13 @@ void song_play()
                 gotoxy(43, 21 - stage);
                 printf("      ");
                 gotoxy(43, 22 - stage);
-                printf("  ã…‡  ");
+                printf("  ¤·  ");
                 gotoxy(43, 23 - stage);
-                printf("ï¼¼ã…£ï¼");
+                printf("¡¬¤Ó£¯");
                 gotoxy(43, 24 - stage);
-                printf("  ã…£  ");
+                printf("  ¤Ó  ");
                 gotoxy(43, 25 - stage);
-                printf(" ï¼¼ï¼ ");
+                printf(" ¡¬£¯ ");
                 gotoxy(43, 26 - stage);
                 printf("      ");
                 Sleep(600);
@@ -1247,13 +1247,13 @@ void song_play()
                 gotoxy(43, 22 - stage);
                 printf("      ");
                 gotoxy(43, 23 - stage);
-                printf("  ã…‡  ");
+                printf("  ¤·  ");
                 gotoxy(43, 24 - stage);
-                printf("ï¼ã…£ï¼¼");
+                printf("£¯¤Ó¡¬");
                 gotoxy(43, 25 - stage);
-                printf("  ã…£  ");
+                printf("  ¤Ó  ");
                 gotoxy(43, 26 - stage);
-                printf(" ï¼ï¼¼ ");
+                printf(" £¯¡¬ ");
                 Sleep(600);
             }
         }
@@ -1265,7 +1265,7 @@ void song_play()
         while (power)
         {
             song = rand() % 3 + 1;
-            if (song_counter[song - 1] == 1) // ê°™ì€ ê³¡ ì¤‘ë³µ ì¬ìƒ ë°©ì§€
+            if (song_counter[song - 1] == 1) // °°Àº °î Áßº¹ Àç»ı ¹æÁö
                 power = 0;
         }
         song_ctrl = 0;
@@ -1274,7 +1274,7 @@ void song_play()
     if (song == 1 && game_over == 0)
     {
         //PlaySound(NULL, 0, 0);
-        //PlaySound(TEXT("BGM001-Bradinsky"), NULL, SND_ASYNC | SND_LOOP);
+        //PlaySound(TEXT("BGM001-Bradinsky"), NULL, SND_ASYNC | SND_L¡áP);
         delay_dance = 345;
         song = 0;
         song_counter[0] = 0;
@@ -1282,7 +1282,7 @@ void song_play()
     if (song == 2 && game_over == 0)
     {
         //PlaySound(NULL, 0, 0);
-        //PlaySound(TEXT("BGM002-Troika"), NULL, SND_ASYNC | SND_LOOP);
+        //PlaySound(TEXT("BGM002-Troika"), NULL, SND_ASYNC | SND_L¡áP);
         delay_dance = 408;
         song = 0;
         song_counter[1] = 0;
@@ -1290,7 +1290,7 @@ void song_play()
     if (song == 3 && game_over == 0)
     {
         //PlaySound(NULL, 0, 0);
-        //PlaySound(TEXT("BGM003-Kalinka"), NULL, SND_ASYNC | SND_LOOP);
+        //PlaySound(TEXT("BGM003-Kalinka"), NULL, SND_ASYNC | SND_L¡áP);
         delay_dance = 406;
         song = 0;
         song_counter[2] = 0;
@@ -1298,8 +1298,8 @@ void song_play()
 }
 void speed_ctrl()
 {
-    ///// ë‚œì´ë„ ì¡°ì ˆ
-    //ë¸”ëŸ­ í•˜ê°• ì†ë„ ì¡°ì ˆ
+    ///// ³­ÀÌµµ Á¶Àı
+    //ºí·° ÇÏ°­ ¼Óµµ Á¶Àı
     if (stage < 5)
     {
         delay = 1000 - stage * 200;
@@ -1316,7 +1316,7 @@ void speed_ctrl()
 
 void keyboard_ctrl()
 {
-    //// í‚¤ë³´ë“œ ì¡°ì‘
+    //// Å°º¸µå Á¶ÀÛ
     if (_kbhit() == 1 && checkCtrl == 1)
     {
         input = 0;
@@ -1325,25 +1325,25 @@ void keyboard_ctrl()
         if (input == 224)
         {
             input = _getch();
-            if (input == 75) // â—€ Left
+            if (input == 75) // ¢¸ Left
             {
                 key_light_on(input);
                 command = 1;
                 block_ctrl(shape, x, y, rotate, state, command);
             }
-            else if (input == 77) // â–¶ Right
+            else if (input == 77) // ¢º Right
             {
                 key_light_on(input);
                 command = 2;
                 block_ctrl(shape, x, y, rotate, state, command);
             }
-            else if (input == 80) // â–¼ Fast Down
+            else if (input == 80) // ¡å Fast Down
             {
                 key_light_on(input);
                 command = 3;
                 block_ctrl(shape, x, y, rotate, state, command);
             }
-            else if (input == 72) // â–² Rotate(Clock)
+            else if (input == 72) // ¡ã Rotate(Clock)
             {
                 key_light_on(input);
                 command = 5;
@@ -1351,7 +1351,7 @@ void keyboard_ctrl()
             }
         }
 
-        if (input == 32) // [SPACE]:Drop (=Fast Down ìë™ ë°˜ë³µ)
+        if (input == 32) // [SPACE]:Drop (=Fast Down ÀÚµ¿ ¹İº¹)
         {
             key_light_on(input);
             command = 4;
@@ -1441,7 +1441,7 @@ void keyboard_ctrl()
 }
 
 void map(int a) // 0.void 1.wall
-    //ê³µì‚¬ì¤‘          2.diamond 3.heart 4.zigzag 5.random)
+    //°ø»çÁß          2.diamond 3.heart 4.zigzag 5.random)
 {
     for (i = 23; i >= 0; i--)
     {
@@ -1478,34 +1478,34 @@ void map(int a) // 0.void 1.wall
         //    }
     }
 }
-void key_light_on(int input) // â–²(72) â–¼(80) â—€(75) â–¶(77)  SP(32)  z(122)  x(120)  c(99)  TAB(9)  ESC(27)
+void key_light_on(int input) // ¡ã(72) ¡å(80) ¢¸(75) ¢º(77)  SP(32)  z(122)  x(120)  c(99)  TAB(9)  ESC(27)
 {
     if (input == 72)
     {
         gotoxy(8, 16);
         setcolor(11, 0);
-        printf("â–²");
+        printf("¡ã");
         setcolor(7, 0);
     }
     else if (input == 80)
     {
         gotoxy(8, 18);
         setcolor(11, 0);
-        printf("â–¼");
+        printf("¡å");
         setcolor(7, 0);
     }
     else if (input == 75)
     {
         gotoxy(6, 17);
         setcolor(11, 0);
-        printf("â—€");
+        printf("¢¸");
         setcolor(7, 0);
     }
     else if (input == 77)
     {
         gotoxy(10, 17);
         setcolor(11, 0);
-        printf("â–¶");
+        printf("¢º");
         setcolor(7, 0);
     }
     else if (input == 32)
@@ -1559,13 +1559,13 @@ void key_light_off()
     {
         setcolor(7, 0);
         gotoxy(8, 16);
-        printf("â–²");
+        printf("¡ã");
         gotoxy(8, 18);
-        printf("â–¼");
+        printf("¡å");
         gotoxy(6, 17);
-        printf("â—€");
+        printf("¢¸");
         gotoxy(10, 17);
-        printf("â–¶");
+        printf("¢º");
         gotoxy(3, 21);
         printf("SPACE");
         gotoxy(3, 22);
@@ -1584,7 +1584,7 @@ void key_light_off()
 }
 
 void block_fall()
-{ ///// ì‹œê°„ ê²½ê³¼ì— ì˜í•œ ë¸”ëŸ­ í•˜ê°• (=Fast Down 1íšŒ ì…ë ¥)
+{ ///// ½Ã°£ °æ°ú¿¡ ÀÇÇÑ ºí·° ÇÏ°­ (=Fast Down 1È¸ ÀÔ·Â)
     if ((_kbhit() == 0 && currentTickCount - startTickCount >= delay) ||
         ((input == 75 || input == 77 || input == 72 || input == 80 || input == 32 || input == 122 || input == 120) && currentTickCount - startTickCount >= delay))
     {
@@ -1594,14 +1594,14 @@ void block_fall()
     }
 }
 void block(int input_shape, int input_x, int input_y, int move_x, int move_y, int input_rotate, int input_state)
-//shape  // 0:system, 1:ã… , 2:ã…¡ , 3: ã…—, 4:ã„´ , 5: ã„´(rev), 6:ã„¹, 7:ã„¹(rev)
-//ìƒ‰ ì •ë ¬ // system(7,0) ã…(14,0)ë…¸ë‘ ã…¡ë¹¨ê°•(12,0) ã…—(10,0)ì´ˆë¡ ã„´(11,0)í•˜ëŠ˜ ã„´reví°(15,0) ã„¹íŒŒë‘(9,0) ã„¹revë³´ë¼(13,0)
+//shape  // 0:system, 1:¡à , 2:¤Ñ , 3: ¤Ç, 4:¤¤ , 5: ¤¤(rev), 6:¤©, 7:¤©(rev)
+//»ö Á¤·Ä // system(7,0) ¡à(14,0)³ë¶û ¤Ñ»¡°­(12,0) ¤Ç(10,0)ÃÊ·Ï ¤¤(11,0)ÇÏ´Ã ¤¤revÈò(15,0) ¤©ÆÄ¶û(9,0) ¤©revº¸¶ó(13,0)
 
-//input_x, input_y : block coreì˜ ì¢Œí‘œ (ì¶©ëŒ ì—¬ë¶€ ê²°ì •í•  ë•Œ ì¤‘ìš”!!!!)
+//input_x, input_y : block coreÀÇ ÁÂÇ¥ (Ãæµ¹ ¿©ºÎ °áÁ¤ÇÒ ¶§ Áß¿ä!!!!)
 //move_x : Left/Right = -1/+1
 //move_y : Down = +1
 //input_rotate : 0, 1, 2, 3, 0, 1, 2, 3, ...
-//input_state : ë¸”ëŸ­ ìƒíƒœ : state = (shape * 100~600) + (rotate * 0~30) + (ì¡°ì‘/ê³ ì • ì‹œ +1/2);
+//input_state : ºí·° »óÅÂ : state = (shape * 100~600) + (rotate * 0~30) + (Á¶ÀÛ/°íÁ¤ ½Ã +1/2);
 {
     //////////////////
     int i, j;
@@ -1613,14 +1613,14 @@ void block(int input_shape, int input_x, int input_y, int move_x, int move_y, in
             for (i = 1; i <= 10; i++)
             {
                 if (game_screen[0][i] % 10 == 1)
-                    game_screen[0][i] = 8; // ë§¨ ìœ„ íŒì • ë¼ì¸ ë¸”ëŸ­ ì”ìƒ ì œê±°
+                    game_screen[0][i] = 8; // ¸Ç À§ ÆÇÁ¤ ¶óÀÎ ºí·° ÀÜ»ó Á¦°Å
                 if (game_screen[0][i] % 10 == 2)
-                    game_over = 1; // ë§¨ ìœ„ íŒì • ë¼ì¸ì— ë¸”ëŸ­ ê³ ì •ì‹œ ê²Œì„ì˜¤ë²„ ì²˜ë¦¬
+                    game_over = 1; // ¸Ç À§ ÆÇÁ¤ ¶óÀÎ¿¡ ºí·° °íÁ¤½Ã °ÔÀÓ¿À¹ö Ã³¸®
             }
         }
         for (i = 1; i <= 10; i++)
         {
-            if (game_screen[j][i] % 10 == 1) // ë¸”ëŸ­ ì”ìƒ ì œê±°
+            if (game_screen[j][i] % 10 == 1) // ºí·° ÀÜ»ó Á¦°Å
                 game_screen[j][i] = 0;
         }
     }
@@ -1628,7 +1628,7 @@ void block(int input_shape, int input_x, int input_y, int move_x, int move_y, in
 
     if (game_over == 0)
     {
-        // ã… (2*2 ì™¼ìª½ ìœ„ì— í•µ)
+        // ¡à (2*2 ¿ŞÂÊ À§¿¡ ÇÙ)
         if (input_shape == 1 && (input_rotate == 0 || input_rotate == 1 || input_rotate == 2 || input_rotate == 3))
         {
             if (game_screen[1][5] % 10 == 2 || game_screen[1][6] % 10 == 2)
@@ -1645,7 +1645,7 @@ void block(int input_shape, int input_x, int input_y, int move_x, int move_y, in
             }
         }
 
-        // ã…¡ (4*4 ì™¼ìª½ ìœ„ì— í•µ) (ì£¼ì˜!! : ã…£ë§›ì‚´ì€ ë§¨ ìœ„ ë°”ë¡œ ì™¼ìª½ì´ í•µ!!
+        // ¤Ñ (4*4 ¿ŞÂÊ À§¿¡ ÇÙ) (ÁÖÀÇ!! : ¤Ó¸À»ìÀº ¸Ç À§ ¹Ù·Î ¿ŞÂÊÀÌ ÇÙ!!
         else if (input_shape == 2 && (input_rotate == 0 || input_rotate == 2))
         {
             if (game_screen[1][4] % 10 == 2 || game_screen[1][5] % 10 == 2 || game_screen[1][6] % 10 == 2 || game_screen[1][7] % 10 == 2)
@@ -1669,7 +1669,7 @@ void block(int input_shape, int input_x, int input_y, int move_x, int move_y, in
             }
         }
 
-        //ã…— (3*3 ê°€ìš´ë°ì— í•µ)
+        //¤Ç (3*3 °¡¿îµ¥¿¡ ÇÙ)
         else if (input_shape == 3 && input_rotate == 0)
         {
             if (game_screen[1][4] % 10 == 2 || game_screen[1][5] % 10 == 2 || game_screen[1][6] % 10 == 2)
@@ -1725,7 +1725,7 @@ void block(int input_shape, int input_x, int input_y, int move_x, int move_y, in
             }
         }
 
-        //ã„´ (3*3 ê°€ìš´ë°ì— í•µ)
+        //¤¤ (3*3 °¡¿îµ¥¿¡ ÇÙ)
         else if (input_shape == 4 && input_rotate == 0)
         {
             if (game_screen[1][4] % 10 == 2 || game_screen[1][5] % 10 == 2 || game_screen[1][6] % 10 == 2)
@@ -1781,7 +1781,7 @@ void block(int input_shape, int input_x, int input_y, int move_x, int move_y, in
             }
         }
 
-        //ã„´rev (3*3 ê°€ìš´ë°ì— í•µ)
+        //¤¤rev (3*3 °¡¿îµ¥¿¡ ÇÙ)
         else if (input_shape == 5 && input_rotate == 0)
         {
             if (game_screen[1][4] % 10 == 2 || game_screen[1][5] % 10 == 2 || game_screen[1][6] % 10 == 2)
@@ -1837,7 +1837,7 @@ void block(int input_shape, int input_x, int input_y, int move_x, int move_y, in
             }
         }
 
-        //Z (3*3 ê°€ìš´ë°ì— í•µ)
+        //Z (3*3 °¡¿îµ¥¿¡ ÇÙ)
         else if (input_shape == 6 && (input_rotate == 0 || input_rotate == 2))
         {
             for (j = input_y - 1; j <= input_y; j++)
@@ -1865,7 +1865,7 @@ void block(int input_shape, int input_x, int input_y, int move_x, int move_y, in
             }
         }
 
-        //Zrev (3*3 ê°€ìš´ë°ì— í•µ)
+        //Zrev (3*3 °¡¿îµ¥¿¡ ÇÙ)
         else if (input_shape == 7 && (input_rotate == 0 || input_rotate == 2))
         {
             for (j = input_y - 1; j <= input_y; j++)
@@ -1895,12 +1895,12 @@ void block(int input_shape, int input_x, int input_y, int move_x, int move_y, in
     }
 }
 void block_ctrl(int input_shape, int input_x, int input_y, int input_rotate, int input_state, int input_command)
-//input_command : 1. â—€(75)   2. â–¶(77)   3. â–¼(80)  4.[SPACE]Drop(32)
-//                5. â–²(72) or [X](120)   6.[Z](122)  7.[C]Hold(99)
+//input_command : 1. ¢¸(75)   2. ¢º(77)   3. ¡å(80)  4.[SPACE]Drop(32)
+//                5. ¡ã(72) or [X](120)   6.[Z](122)  7.[C]Hold(99)
 {
-    int drop_power; // drop ì‹¤í–‰ì‹œ ë°˜ë³µë¬¸ ì „ì›
+    int drop_power; // drop ½ÇÇà½Ã ¹İº¹¹® Àü¿ø
 
-    if (input_command == 1) // â—€(75)
+    if (input_command == 1) // ¢¸(75)
     {
         if (input_shape == 1)
         {
@@ -2090,7 +2090,7 @@ void block_ctrl(int input_shape, int input_x, int input_y, int input_rotate, int
         }
     }
 
-    else if (input_command == 2) // â–¶(77)
+    else if (input_command == 2) // ¢º(77)
     {
         if (input_shape == 1)
         {
@@ -2280,7 +2280,7 @@ void block_ctrl(int input_shape, int input_x, int input_y, int input_rotate, int
         }
     }
 
-    else if (input_command == 3) // â–¼(80)
+    else if (input_command == 3) // ¡å(80)
     {
         if (input_shape == 1)
         {
@@ -2923,7 +2923,7 @@ void block_ctrl(int input_shape, int input_x, int input_y, int input_rotate, int
         }
     }
 
-    else if (input_command == 5) // Rotate(Clock) : â–²(72) or [x](120)
+    else if (input_command == 5) // Rotate(Clock) : ¡ã(72) or [x](120)
     {
         if (input_shape == 1)
             rotate++, state += 10;
@@ -3240,4 +3240,4 @@ void print_debug_info()
     }
 }
 
-/********** í•¨ìˆ˜ ì •ì˜ ë!!! **********/
+/********** ÇÔ¼ö Á¤ÀÇ ³¡!!! **********/

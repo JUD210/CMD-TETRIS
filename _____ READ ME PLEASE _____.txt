@@ -1,6 +1,16 @@
-'굴림' 폰트에 최적화되어 있습니다!
-굴림 이외의 폰트를 사용하시면 글자가 깨질 겁니다.
+- BGM은 Settings 폴더 내부에 BGM.zip에 압축되어 있습니다.
+비밀번호는 이 영상의 설명란에 써져있습니다. (https://youtu.be/x75PPAyCXhY)
+(저작권 문제 발생시 곧바로 삭제)
 
-Optimized for 'Gulim' font!
+- '굴림' 폰트에 최적화되어 있습니다!
+굴림 이외의 폰트를 사용하시면 글자가 깨질 확률이 높습니다.
+
+
+--------------------------
+
+- BGM is archived in the Settings folder.
+You can find the password on this video's description. (https://youtu.be/x75PPAyCXhY)
+(If copyright issue occurs, I'll delete it right away)
+
+- Optimized for 'Gulim' font!
 If you use another font, texts would be broken.
-

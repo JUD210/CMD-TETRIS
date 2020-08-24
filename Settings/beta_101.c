@@ -182,6 +182,8 @@ void main()
 
 void main_menu()
 {
+	PlaySound(NULL, 0, 0);
+
     gotoxy(21, 4);
     printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
     gotoxy(21, 5);
